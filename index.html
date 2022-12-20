@@ -5,15 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>彩带圣诞树</title>
+  <title>Christmas tree</title>
   <link rel="stylesheet" href="style.css">
   <!-- Vue -->
-  <script src="/js/vue.min.js"></script>
+  <script src="/js/vue.min.js" type="text/javascript"></script>
+
 </head>
 
 <body>
   <div class="tree">
-     <!--Vue attributes -->
+    <!--Vue attributes -->
     <div class="tree-light" v-for="(item,index) in 50"
       :style="{'--appear':index,'--y':2*index,'--rotate':1440-28.8*index,'--radius':12.5-0.25*index,'--speed':index*0.1,'--delay':index*0.05}">
     </div>
@@ -24,15 +25,13 @@
         fill="none" stroke-width="6.88" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
   </div>
-  
+
+  <script>    
+    // Vue syntax
+    new Vue({
+      el: '.tree',
+      data: {}
+    })
+  </script>
 </body>
-
 </html>
-
-<script>
-  // Vue syntax
-  new Vue({
-    el: '.tree',
-    data: {}
-  })
-</script>
