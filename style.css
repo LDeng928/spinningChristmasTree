@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(51,155,217);
+  background: radial-gradient(circle, rgba(51,155,217,1) 0%, rgba(224,139,176,1) 100%);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.tree {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  transform-style: preserve-3d;
+  /* Animation */
+  animation: spin 2s linear infinite;
+}
+
+/* Color dots */
+.tree-light {
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  left: 50%; /* tree class has relative position */
+  bottom: calc(var(--y) * 1%);
+  transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg)) translate3d(0, 0, calc(var(--radius, 0) * 8px));
+  /* Animation */
+  animation: flash calc(var(--speed) * 1s) calc(var(--delay) * 1s) infinite, appear 0.5s calc(var(--appear) * 0.05s);
+}
+
+/* Star */
+.tree-star {
+  stroke: #f4d35e;
+  /* set dotted lines, line-height */
+  stroke-dasharray: 1000 1000;
+  width: 40px;
+  height: 40px;
+  /* lighting effect */
+  filter: drop-shadow(0 0 10px #fcf1cf);
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 0);
+  /* animation */
+  animation: stroke 1s calc((var(--delay) * 0.95) * 0.05s) backwards;
+}
+
+/* Color dots appear */
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Color dots change color */
+@keyframes flash {
+  0%,
+  100% {
+    background-color: #8338ec;
+  }
+  20% {
+    background-color: #ff006e;
+  }
+  40% {
+    background-color: #3a86ff;
+  }
+  60% {
+    background-color: #ffbe0b;
+  }
+  80% {
+    background-color: #fb5607;
+  }
+}
+
+/* Tree spinning */
+@keyframes spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Star appear */
+@keyframes stroke {
+  from {
+    stroke-dashoffset: -1000;
+  }
+}
